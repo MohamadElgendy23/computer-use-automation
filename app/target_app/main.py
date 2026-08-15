@@ -189,8 +189,51 @@ def create_sub_account(
 
         <p>Please review the information above.</p>
 
-        <button>Confirm</button>
-        <button>Cancel</button>
+        <form method="post" action="/sub-account/confirm">
+            <input type="hidden" name="member_id" value="{member_id}">
+            <input type="hidden" name="account_type" value="{account_type}">
+            <input type="hidden" name="initial_deposit" value="{initial_deposit}">
+
+            <button type="submit">Confirm</button>
+        </form>
+
+        <a href="/sub-account?member_id={member_id}">Cancel</a>
+    </body>
+    </html>
+    """
+
+
+@app.post("/sub-account/confirm", response_class=HTMLResponse)
+def confirm_sub_account(
+    member_id: str = Form(...),
+    account_type: str = Form(...),
+    initial_deposit: float = Form(...),
+):
+    return f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Account Created</title>
+    </head>
+
+    <body>
+        <h1>Sub-Account Created Successfully</h1>
+
+        <p>
+            <strong>Member ID:</strong> {member_id}
+        </p>
+
+        <p>
+            <strong>Account Type:</strong> {account_type.title()}
+        </p>
+
+        <p>
+            <strong>Initial Deposit:</strong> ${initial_deposit:.2f}
+        </p>
+
+        <p>
+            <strong>Status:</strong> Created
+        </p>
     </body>
     </html>
     """

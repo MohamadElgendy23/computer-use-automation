@@ -21,9 +21,27 @@ class BrowserController:
         self.page.locator(selector).fill(value)
 
     def click(self, selector):
-        self.page.locator(selector).click()   
+        self.page.locator(selector).click()
+
+    def get_page_text(self):
+        return self.page.locator("body").inner_text()
+
+    def get_interactive_elements(self):
+        elements = []
+
+        for element in self.page.locator("input, button, select, a").all():
+            elements.append(
+                {
+                    "tag": element.evaluate("(el) => el.tagName"),
+                    "id": element.get_attribute("id"),
+                    "name": element.get_attribute("name"),
+                    "text": element.inner_text(),
+                    "type": element.get_attribute("type"),
+                }
+            )
+
+        return elements
 
     def close(self):
         self.browser.close()
         self.playwright.stop()
-

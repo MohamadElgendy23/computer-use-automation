@@ -1,9 +1,14 @@
 from browser import BrowserController
+from task import task
+import json
+from pathlib import Path
 
 
 class Agent:
     def __init__(self):
         self.browser = BrowserController()
+        self.action_history = []
+        self.step_number = 0
 
     def observe(self):
         page_text = self.browser.get_page_text()
@@ -27,7 +32,7 @@ class Agent:
         if "Member Search" in page_text:
             return {
                 "action": "search_member",
-                "member_id": "12345",
+                "member_id": task.member_id,
             }
 
         if "Member Details" in page_text:
@@ -38,8 +43,8 @@ class Agent:
         if "Open New Sub-Account" in page_text:
             return {
                 "action": "create_sub_account",
-                "account_type": "savings",
-                "initial_deposit": "500",
+                "account_type": task.account_type,
+                "initial_deposit": task.initial_deposit,
             }
 
         if "Review New Sub-Account" in page_text:
@@ -78,6 +83,16 @@ class Agent:
         elif action == "confirm_sub_account":
             self.browser.click("button")
 
+    def record_action(self, decision):
+        self.action_history.append(decision)
+
+    def save_artifacts(self):
+        artifacts_dir = Path("artifacts")
+        artifacts_dir.mkdir(exist_ok=True)
+
+        with open(artifacts_dir / "action_history.json", "w") as file:
+            json.dump(self.action_history, file, indent=4)
+
     def start(self):
         self.browser.start()
         self.browser.open("http://127.0.0.1:8000")
@@ -91,6 +106,7 @@ class Agent:
             print(observation["page_text"])
 
             decision = self.decide(observation)
+            self.record_action(decision)
 
             print("DECISION:")
             print(decision)
@@ -103,6 +119,7 @@ class Agent:
 
         input("\nPress Enter to close...")
 
+        self.save_artifacts()
         self.browser.close()
 
 

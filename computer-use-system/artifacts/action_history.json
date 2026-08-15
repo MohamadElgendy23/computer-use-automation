@@ -1,0 +1,22 @@
+[
+    {
+        "action": "login",
+        "username": "demo",
+        "password": "password"
+    },
+    {
+        "action": "search_member",
+        "member_id": "12345"
+    },
+    {
+        "action": "open_sub_account"
+    },
+    {
+        "action": "create_sub_account",
+        "account_type": "savings",
+        "initial_deposit": "500"
+    },
+    {
+        "action": "confirm_sub_account"
+    }
+]

@@ -23,6 +23,9 @@ class BrowserController:
     def click(self, selector):
         self.page.locator(selector).click()
 
+    def screenshot(self, path):
+        self.page.screenshot(path=path)
+
     def get_page_text(self):
         return self.page.locator("body").inner_text()
 

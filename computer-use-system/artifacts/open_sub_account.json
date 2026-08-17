@@ -1,0 +1,89 @@
+{
+  "name": "open_sub_account",
+  "version": "1.0.0",
+  "description": "Open a new sub-account for an existing member.",
+  "inputs": {
+    "member_id": "string",
+    "account_type": "string",
+    "initial_deposit": "number"
+  },
+  "outputs": {
+    "member_id": "string",
+    "account_type": "string",
+    "initial_deposit": "number",
+    "status": "string"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "login",
+      "target": {
+        "strategy": "label",
+        "value": "Username"
+      },
+      "inputs": {},
+      "checkpoint": {
+        "type": "text_present",
+        "value": "Member Search"
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_member",
+      "target": {
+        "strategy": "label",
+        "value": "Member ID"
+      },
+      "inputs": {
+        "member_id": "{{member_id}}"
+      },
+      "checkpoint": {
+        "type": "text_present",
+        "value": "Member Details"
+      }
+    },
+    {
+      "step": 3,
+      "action": "open_sub_account",
+      "target": {
+        "strategy": "text",
+        "value": "Open Sub-Account"
+      },
+      "inputs": {},
+      "checkpoint": {
+        "type": "text_present",
+        "value": "Open New Sub-Account"
+      }
+    },
+    {
+      "step": 4,
+      "action": "create_sub_account",
+      "target": {
+        "strategy": "label",
+        "value": "Account Type"
+      },
+      "inputs": {
+        "account_type": "{{account_type}}",
+        "initial_deposit": "{{initial_deposit}}"
+      },
+      "checkpoint": {
+        "type": "text_present",
+        "value": "Review New Sub-Account"
+      }
+    },
+    {
+      "step": 5,
+      "action": "confirm_sub_account",
+      "target": {
+        "strategy": "text",
+        "value": "Confirm"
+      },
+      "inputs": {},
+      "checkpoint": {
+        "type": "text_present",
+        "value": "Sub-Account Created Successfully"
+      }
+    }
+  ],
+  "success_condition": "Sub-Account Created Successfully is visible"
+}

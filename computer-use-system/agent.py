@@ -1,5 +1,6 @@
 from browser import BrowserController
 from task import task
+from llm import LLMDecisionMaker
 import json
 from pathlib import Path
 
@@ -9,6 +10,7 @@ class Agent:
         self.browser = BrowserController()
         self.action_history = []
         self.step_number = 0
+        self.llm = LLMDecisionMaker()
 
     def observe(self):
         page_text = self.browser.get_page_text()
@@ -93,6 +95,9 @@ class Agent:
         with open(artifacts_dir / "action_history.json", "w") as file:
             json.dump(self.action_history, file, indent=4)
 
+    def task_completed(self, observation):
+        return "Sub-Account Created Successfully" in observation["page_text"]
+
     def start(self):
         self.browser.start()
         self.browser.open("http://127.0.0.1:8000")
@@ -116,6 +121,18 @@ class Agent:
                 break
 
             self.execute(decision)
+
+            self.step_number += 1
+
+            screenshot_path = Path("artifacts") / f"step_{self.step_number}.png"
+
+            self.browser.screenshot(str(screenshot_path))
+
+            new_observation = self.observe()
+
+            if self.task_completed(new_observation):
+                print("\nTASK COMPLETED SUCCESSFULLY")
+                break
 
         input("\nPress Enter to close...")
 

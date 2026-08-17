@@ -1,0 +1,11 @@
+Starting deterministic replay...
+
+Executing step 1: login
+Checkpoint passed: Member Search
+Executing step 2: search_member
+
+BUSINESS OUTCOME
+{'status': 'business_outcome', 'step': 2, 'outputs': {}, 'error': {'status': 'business_outcome', 'outcome': 'member_not_found', 'message': 'The requested member does not exist.'}}
+
+FINAL RESULT:
+{'status': 'business_outcome', 'step': 2, 'outputs': {}, 'error': {'status': 'business_outcome', 'outcome': 'member_not_found', 'message': 'The requested member does not exist.'}}

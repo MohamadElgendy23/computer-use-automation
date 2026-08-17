@@ -1,0 +1,19 @@
+Starting deterministic replay...
+
+Executing step 1: login
+Checkpoint passed: Member Search
+Executing step 2: search_member
+Checkpoint passed: Member Details
+Executing step 3: open_sub_account
+Checkpoint passed: Open New Sub-Account
+Executing step 4: create_sub_account
+Checkpoint passed: Review New Sub-Account
+
+=== HUMAN INTERVENTION REQUIRED ===
+{'capability': 'open_sub_account', 'step': 5, 'reason': 'Blocked unauthorized action: delete_account', 'screenshot': 'evidence/replay_failure_step_5.png', 'status': 'pending'}
+
+REPLAY ESCALATED
+{'status': 'escalated', 'step': 5, 'outputs': {}, 'error': {'type': 'PermissionError', 'message': 'Blocked unauthorized action: delete_account', 'intervention': {'capability': 'open_sub_account', 'step': 5, 'reason': 'Blocked unauthorized action: delete_account', 'screenshot': 'evidence/replay_failure_step_5.png', 'status': 'pending'}}}
+
+FINAL RESULT:
+{'status': 'escalated', 'step': 5, 'outputs': {}, 'error': {'type': 'PermissionError', 'message': 'Blocked unauthorized action: delete_account', 'intervention': {'capability': 'open_sub_account', 'step': 5, 'reason': 'Blocked unauthorized action: delete_account', 'screenshot': 'evidence/replay_failure_step_5.png', 'status': 'pending'}}}

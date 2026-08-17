@@ -1,0 +1,58 @@
+--- STEP 1 ---
+PAGE:
+Bank Operations Portal
+Username:
+Password:
+Login
+
+DECISION:
+{'action': 'login', 'username': 'demo', 'password': 'password'}
+
+--- STEP 2 ---
+PAGE:
+Member Search
+Member ID: Search
+
+DECISION:
+{'action': 'search_member', 'member_id': '12345'}
+
+--- STEP 3 ---
+PAGE:
+Member Details
+
+Member ID: 12345
+Name: John Smith
+Savings Balance: $4250.00
+Checking Balance: $1200.00
+
+DECISION:
+{'action': 'open_sub_account'}
+
+--- STEP 4 ---
+PAGE:
+Open New Sub-Account
+
+Member ID: 12345
+Account Type:
+Savings
+Checking
+
+Initial Deposit:
+
+DECISION:
+{'action': 'create_sub_account',
+ 'account_type': 'savings',
+ 'initial_deposit': '500'}
+
+--- STEP 5 ---
+PAGE:
+Review New Sub-Account
+
+Member ID: 12345
+Account Type: Savings
+Initial Deposit: $500.00
+
+DECISION:
+{'action': 'confirm_sub_account'}
+
+TASK COMPLETED SUCCESSFULLY

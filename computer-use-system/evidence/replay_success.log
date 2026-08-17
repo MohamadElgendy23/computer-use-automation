@@ -1,0 +1,19 @@
+Starting deterministic replay...
+
+Executing step 1: login
+Checkpoint passed: Member Search
+Executing step 2: search_member
+Checkpoint passed: Member Details
+Executing step 3: open_sub_account
+Checkpoint passed: Open New Sub-Account
+Executing step 4: create_sub_account
+Checkpoint passed: Review New Sub-Account
+WARNING: risky action detected: confirm_sub_account
+Executing step 5: confirm_sub_account
+Checkpoint passed: Sub-Account Created Successfully
+
+REPLAY SUCCESS
+{'status': 'success', 'step': 5, 'outputs': {'member_id': '12345', 'account_type': 'savings', 'initial_deposit': '500', 'status': 'created'}, 'error': None}
+
+FINAL RESULT:
+{'status': 'success', 'step': 5, 'outputs': {'member_id': '12345', 'account_type': 'savings', 'initial_deposit': '500', 'status': 'created'}, 'error': None}

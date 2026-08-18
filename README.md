@@ -435,14 +435,14 @@ The implementation targets a local web application and focuses on a thin but com
 
 The following are intentionally outside the implementation scope:
 
-• native desktop automation
-• distributed execution infrastructure
-• full multi-tenant infrastructure
-• a production operator console
-• real banking credentials or financial data
-• persistent production databases
-• real-time collaborative browsing
-• production authentication and authorization infrastructure
+- native desktop automation
+- distributed execution infrastructure
+- full multi-tenant infrastructure
+- a production operator console
+- real banking credentials or financial data
+- persistent production databases
+- real-time collaborative browsing
+- production authentication and authorization infrastructure
 
 These choices keep the implementation focused on the core requirements: discovery, artifact creation, deterministic replay, error handling, safety, evidence, and human escalation.
 

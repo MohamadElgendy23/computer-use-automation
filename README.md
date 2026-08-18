@@ -19,6 +19,7 @@ computer-use-automation/
 ├── .gitignore
 ├── .venv/
 ├── README.md
+├── REPORT.md
 │
 ├── app/
 │   └── target_app/

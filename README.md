@@ -152,13 +152,13 @@ The artifact is separate from the raw model/action history.
 
 It contains the information required for deterministic execution, including:
 
-• capability name and version
-• typed inputs
-• typed outputs
-• ordered actions
-• element targeting information
-• checkpoints
-• success conditions
+- capability name and version
+- typed inputs
+- typed outputs
+- ordered actions
+- element targeting information
+- checkpoints
+- success conditions
 
 The artifact represents the reusable capability that an agent can invoke without asking the LLM to rediscover the workflow.
 
@@ -212,11 +212,11 @@ The system also detects recoverable and hard failures.
 
 Hard failures stop deterministic replay and produce structured error information describing:
 
-• the step where the failure occurred
-• the expected state
-• the observed state
-• the error type
-• the error message
+- the step where the failure occurred
+- the expected state
+- the observed state
+- the error type
+- the error message
 
 Business outcome evidence is stored in:
 
@@ -259,11 +259,11 @@ When automation reaches a state that it cannot safely handle, the system can req
 
 The intervention request contains:
 
-• capability name
-• current step
-• reason for stopping
-• screenshot of the current state
-• intervention status
+- capability name
+- current step
+- reason for stopping
+- screenshot of the current state
+- intervention status
 
 The automation can pause while the human takes control of the existing browser session and can later resume.
 
@@ -279,11 +279,11 @@ The `computer-use-system/evidence/` directory contains evidence from the system'
 
 The evidence includes:
 
-• genuine LLM-driven discovery
-• successful deterministic replay
-• business-outcome handling
-• policy failure and escalation
-• screenshot evidence from a failed replay
+- genuine LLM-driven discovery
+- successful deterministic replay
+- business-outcome handling
+- policy failure and escalation
+- screenshot evidence from a failed replay
 
 The discovery screenshots are also retained under:
 
@@ -351,12 +351,12 @@ The current implementation uses Playwright to operate a browser-based applicatio
 
 The browser controller provides operations such as:
 
-• navigation
-• clicking
-• typing
-• screenshots
-• page-state inspection
-• interactive-element discovery
+- navigation
+- clicking
+- typing
+- screenshots
+- page-state inspection
+- interactive-element discovery
 
 The artifact describes the intended interaction and targeting strategy rather than depending directly on the LLM transcript.
 
@@ -382,12 +382,12 @@ The implementation uses one local banking application, but the capability model 
 
 A production implementation could associate artifacts with:
 
-• application/vendor identity
-• application version
-• tenant/institution
-• artifact version
-• locator strategy
-• optional tenant-specific overrides
+- application/vendor identity
+- application version
+- tenant/institution
+- artifact version
+- locator strategy
+- optional tenant-specific overrides
 
 A base artifact could therefore be reused across institutions running the same underlying application.
 
@@ -450,18 +450,18 @@ These choices keep the implementation focused on the core requirements: discover
 
 With additional development, the system could be extended with:
 
-• native desktop surface adapters
-• accessibility-tree-based targeting
-• stronger screenshot/coordinate fallback targeting
-• tenant-specific artifact variants
-• artifact approval and version management
-• a production operator console
-• persistent artifact storage
-• bounded LLM recovery during replay
-• replay stability metrics
-• additional automated tests
-• richer runtime monitoring
-• distributed execution for large-scale workloads
+- native desktop surface adapters
+- accessibility-tree-based targeting
+- stronger screenshot/coordinate fallback targeting
+- tenant-specific artifact variants
+- artifact approval and version management
+- a production operator console
+- persistent artifact storage
+- bounded LLM recovery during replay
+- replay stability metrics
+- additional automated tests
+- richer runtime monitoring
+- distributed execution for large-scale workloads
 
 The current implementation intentionally prioritizes a complete end-to-end vertical slice over production-scale infrastructure.
 
